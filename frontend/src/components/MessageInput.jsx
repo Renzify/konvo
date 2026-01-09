@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { ImageIcon, SendIcon, XIcon } from "lucide-react";
 
 function MessageInput() {
-  const { playRandomKeyStrokeSOund } = useKeyboardSound();
+  const { playRandomKeyStrokeSound } = useKeyboardSound();
   const [text, setText] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
 
@@ -16,7 +16,7 @@ function MessageInput() {
   const handleSendMessage = (e) => {
     e.preventDefault();
     if (!text.trim() && !imagePreview) return;
-    if (isSoundEnabled) playRandomKeyStrokeSOund();
+    if (isSoundEnabled) playRandomKeyStrokeSound();
 
     sendMessage({
       text: text.trim(),
@@ -72,7 +72,7 @@ function MessageInput() {
           value={text}
           onChange={(e) => {
             setText(e.target.value);
-            isSoundEnabled && playRandomKeyStrokeSOund();
+            isSoundEnabled && playRandomKeyStrokeSound();
           }}
           className="flex-1 bg-slate-800/50 border border-slate-700/50 round-lg py-2 px-4"
           placeholder="Type your message..."
